@@ -1,0 +1,40 @@
+apiVersion: backstage.io/v1beta2
+kind: Template
+# some metadata about the template itself
+metadata:
+  name: test-template
+  title: Test Action template
+  description: shells out
+spec:
+  owner: outside/recsys
+  type: service
+
+  # these are the steps which are rendered in the frontend with the form input
+  parameters:
+    - title: Give it a name
+      required:
+        - serviceName
+      properties:
+        name:
+          title: Name
+          type: string
+          description: Unique name of the service
+          ui:autofocus: true
+          ui:options:
+            rows: 1
+
+  # here's the steps that are executed in series in the scaffolder backend
+  steps:
+    - id: fetch-base
+      name: Fetch Base
+      action: outside:ansible-test
+      input:
+        values:
+          name: '{{ parameters.name }}'
+
+    # - id: register
+    #   name: Register
+    #   action: catalog:register
+    #   input:
+    #     repoContentsUrl: '{{ steps.publish.output.repoContentsUrl }}'
+    #     catalogInfoPath: '/catalog-info.yaml'
