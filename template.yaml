@@ -30,7 +30,7 @@ spec:
       action: outside:ansible-test
       input:
         values:
-          name: '{{ parameters.name }}'
+          name: '{{ parameters.serviceName }}'
 
     # - id: register
     #   name: Register
