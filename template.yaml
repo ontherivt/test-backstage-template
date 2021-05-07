@@ -29,8 +29,8 @@ spec:
 
   # here's the steps that are executed in series in the scaffolder backend
   steps:
-    - id: fetch-base
-      name: Fetch Base
+    - id: test-shell
+      name: Shell out
       action: outside:ansible-test
       input:
         values:
