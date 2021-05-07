@@ -1,27 +1,31 @@
-apiVersion: backstage.io/v1alpha1
+apiVersion: backstage.io/v1beta2
 kind: Template
 # some metadata about the template itself
 metadata:
   name: test-template
   title: Test Action template
   description: shells out
+  tags:
+    - poc
+    - infrastructure
 spec:
   owner: outside/recsys
   type: service
-
+  # templater: cookiecutter # this will come in handy for creating python projects from template repos
   # these are the steps which are rendered in the frontend with the form input
   parameters:
     - title: Give it a name
       required:
         - serviceName
       properties:
-        name:
+        serviceName:
           title: Name
           type: string
           description: Unique name of the service
           ui:autofocus: true
           ui:options:
             rows: 1
+
 
   # here's the steps that are executed in series in the scaffolder backend
   steps:
