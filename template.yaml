@@ -25,20 +25,49 @@ spec:
           ui:autofocus: true
           ui:options:
             rows: 1
+    - title: Choose a location
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
+        description:
+          title: Repo description
+          type: string
 
 
   # here's the steps that are executed in series in the scaffolder backend
   steps:
+    - id: cookiecutter
+      name: Cookiecutter Template
+      input:
+        url: https://github.com/tiangolo/full-stack-fastapi-postgresql
+        values:
+          project_name: {{ parameters.serviceName }}
+          project_slug: {{ parameters.serviceName }}
+          secret_key: 99d3b1f01aa639e4a76f4fc281fc834747a543720ba4c8a8648ba755aef9be7f
+    - id: create-repo
+      name: Create the github repo
+      action: publish:github
+      input:
+        allowedHosts: ['github.com']
+        description: {{ paramters.description }}
+        repoVisibility: private
+        repoUrl: '{{ parameters.repoUrl }}'
     - id: test-shell
       name: Shell out
       action: outside:ansible-test
       input:
         values:
           serviceName: '{{ parameters.serviceName }}'
-
     # - id: register
     #   name: Register
     #   action: catalog:register
     #   input:
-    #     repoContentsUrl: '{{ steps.publish.output.repoContentsUrl }}'
+    #     repoContentsUrl: '{{ steps.create-repo.output.repoContentsUrl }}'
     #     catalogInfoPath: '/catalog-info.yaml'
