@@ -57,6 +57,7 @@ spec:
           first_superuser: foo
           first_superuser_password: bar
           postgres_password: foobarbaz
+          docker_image_prefix: github.com/ontherivt/{{ parameters.serviceName }}
     - id: create-repo
       name: Create the github repo
       action: publish:github
