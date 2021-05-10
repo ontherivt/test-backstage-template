@@ -44,6 +44,7 @@ spec:
   # here's the steps that are executed in series in the scaffolder backend
   steps:
     - id: cookiecutter
+      action: fetch:cookiecutter
       name: Cookiecutter Template
       input:
         url: https://github.com/tiangolo/full-stack-fastapi-postgresql
