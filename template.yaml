@@ -43,6 +43,7 @@ spec:
     - title: Choose a location
       required:
         - repoUrl
+        - description
       properties:
         repoUrl:
           title: Repository Location
@@ -72,7 +73,7 @@ spec:
       action: publish:github
       input:
         allowedHosts: ['github.com']
-        description: '{{ paramters.description }}'
+        description: '{{ parameters.description }}'
         repoVisibility: private
         repoUrl: '{{ parameters.repoUrl }}'
     - id: test-shell
