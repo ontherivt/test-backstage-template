@@ -2,9 +2,9 @@ apiVersion: backstage.io/v1beta2
 kind: Template
 # some metadata about the template itself
 metadata:
-  name: test-template
-  title: Test Action template
-  description: shells out
+  name: fastapi-template
+  title: FastAPI + PostgreSQL Service
+  description: Creates a basic service using FastAPI, Postres, Pipenv
   tags:
     - poc
     - infrastructure
@@ -63,16 +63,16 @@ spec:
       input:
         url: https://github.com/ontherivt/fast-api-cookiecutter.git
         values:
-          service_name: {{ parameters.serviceName }}
-          service_title: {{ parameters.serviceTitle}}
-          team: {{ parameters.team }}
-          system: {{ parameters.system }}
+          service_name: '{{ parameters.serviceName }}'
+          service_title: '{{ parameters.serviceTitle}}'
+          team: '{{ parameters.team }}'
+          system: '{{ parameters.system }}'
     - id: create-repo
       name: Create the github repo
       action: publish:github
       input:
         allowedHosts: ['github.com']
-        description: {{ paramters.description }}
+        description: '{{ paramters.description }}'
         repoVisibility: private
         repoUrl: '{{ parameters.repoUrl }}'
     - id: test-shell
