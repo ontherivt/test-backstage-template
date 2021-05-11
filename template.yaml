@@ -68,6 +68,7 @@ spec:
           service_title: '{{ parameters.serviceTitle}}'
           team: '{{ parameters.team }}'
           system: '{{ parameters.system }}'
+          description: '{{ parameters.description }}'
     - id: create-repo
       name: Create the github repo
       action: publish:github
