@@ -76,6 +76,7 @@ spec:
         description: '{{ parameters.description }}'
         repoVisibility: private
         repoUrl: '{{ parameters.repoUrl }}'
+        sourcePath: '{{ parameters.serviceName }}'
     - id: test-shell
       name: Shell out
       action: outside:ansible-test
