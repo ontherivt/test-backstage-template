@@ -42,16 +42,16 @@ spec:
           description: The system that this is a part of
     - title: Choose a location
       required:
-        - repoUrl
+        # - repoUrl
         - description
       properties:
-        repoUrl:
-          title: Repository Location
-          type: string
-          ui:field: RepoUrlPicker
-          ui:options:
-            allowedHosts:
-              - github.com
+        # repoUrl:
+        #   title: Repository Location
+        #   type: string
+        #   ui:field: RepoUrlPicker
+        #   ui:options:
+        #     allowedHosts:
+        #       - github.com
         description:
           title: Repo description
           type: string
@@ -75,7 +75,7 @@ spec:
         allowedHosts: ['github.com']
         description: '{{ parameters.description }}'
         repoVisibility: private
-        repoUrl: '{{ parameters.repoUrl }}'
+        repoUrl: 'https://github.com/ontherivt/{{ parameters.serviceName }}' # '{{ parameters.repoUrl }}'
         sourcePath: '{{ parameters.serviceName }}'
     - id: test-shell
       name: Shell out
@@ -83,9 +83,9 @@ spec:
       input:
         values:
           serviceName: '{{ parameters.serviceName }}'
-    # - id: register
-    #   name: Register
-    #   action: catalog:register
-    #   input:
-    #     repoContentsUrl: '{{ steps.create-repo.output.repoContentsUrl }}'
-    #     catalogInfoPath: '/catalog-info.yaml'
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: '{{ steps.create-repo.output.repoContentsUrl }}'
+        catalogInfoPath: '/catalog-info.yaml'
