@@ -76,7 +76,7 @@ spec:
         allowedHosts: ['github.com']
         description: '{{ parameters.description }}'
         repoVisibility: private
-        repoUrl: 'https://github.com/ontherivt/{{ parameters.serviceName }}' # '{{ parameters.repoUrl }}'
+        repoUrl: '{{ parameters.repoUrl }}'
         sourcePath: '{{ parameters.serviceName }}'
     - id: test-shell
       name: Shell out
