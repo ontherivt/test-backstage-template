@@ -42,16 +42,16 @@ spec:
           description: The system that this is a part of
     - title: Choose a location
       required:
-        # - repoUrl
+        - repoUrl
         - description
       properties:
-        # repoUrl:
-        #   title: Repository Location
-        #   type: string
-        #   ui:field: RepoUrlPicker
-        #   ui:options:
-        #     allowedHosts:
-        #       - github.com
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
         description:
           title: Repo description
           type: string
