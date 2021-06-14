@@ -69,7 +69,7 @@ spec:
           team: '{{ parameters.team }}'
           system: '{{ parameters.system }}'
           description: '{{ parameters.description }}'
-          db_name: '{{ paremters.serviceName }}_db'
+          db_name: '{{ parameters.serviceName }}_db'
           db_username: '{{ parameters.serviceName }}_db_user'
           db_password: '{{ parameters.serviceName }}_db_pass'
     - id: create-repo
