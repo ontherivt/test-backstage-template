@@ -58,6 +58,12 @@ spec:
 
 
   steps:
+    - id: ecr
+      action: outside:aws-ecr
+      name: ECR repo creation
+      input:
+        values:
+          serviceName: '{{ parameters.serviceName }}'
     - id: cookiecutter
       action: fetch:cookiecutter
       name: Cookiecutter template
