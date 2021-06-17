@@ -87,12 +87,13 @@ spec:
         repoVisibility: private
         repoUrl: '{{ parameters.repoUrl }}'
         sourcePath: '{{ parameters.serviceName }}'
-    - id: test-shell
-      name: Shell out
-      action: outside:ansible-test
+    - id: circleci
+      name: Follow the project in CircleCI
+      action: outside:circleci-follow
       input:
         values:
           serviceName: '{{ parameters.serviceName }}'
+          owner: ontherivt
     - id: register
       name: Register
       action: catalog:register
